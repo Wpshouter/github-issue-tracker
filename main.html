@@ -14,22 +14,22 @@
     <script src="./js/search.js"></script>
   </head>
   <body class="bg-gray-100 py-15 pt-0">
-    <div class="navbar bg-base-100 shadow-sm px-15">
-      <div class="flex-1">
-        <a class="btn btn-ghost text-xl"><img class="max-w-10" src="./assets/github-logo.png"/> <h1 class="ml-1 text-2xl text-black">GitHub Issues Tracker</h1></a>
+    <div class="bg-white flex item-center justify-between bg-base-100 shadow-sm px-15 py-5 flex-wrap flex-col sm:flex-row">
+      <div class="">
+        <a class="btn btn-ghost text-xl"><img class="max-w-5 sm:max-w-10" src="./assets/github-logo.png"/> <h1 class=" ml-1 text-md sm:text-2xl text-black">GitHub Issues Tracker</h1></a>
       </div>
-      <div class="flex gap-2">
+      <div class="flex flex-col gap-2 sm:flex-row mt-5 sm:mt-0">
         <input id="searchinput"
           type="text"
           placeholder="Search"
-          class="input input-bordered w-24 md:w-auto"
+          class="w-full input input-bordered  md:w-auto"
         />
        <button class="btn btn-md btn-primary" id="searchbro">Search</button>
       </div>
     </div>
 
 
-    <section class="max-w-10/12 mx-auto mt-15">
+    <section class="max-w-11/12 md:max-w-10/12 mx-auto mt-15">
         <div class="bg-white shadow-sm rounded-md flex gap-2 p-5">
               <a id="all_btn" class="w-25 text-white btn btn-active btn-primary">
                 All

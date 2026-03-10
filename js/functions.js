@@ -119,6 +119,7 @@ function modalContentGenerate(issue) {
 function show_loader(){
     const loader = document.getElementById('loader_icon');
     loader.classList.remove('hidden');
+    
 }
 function hide_loader(){
     const loader = document.getElementById('loader_icon');
