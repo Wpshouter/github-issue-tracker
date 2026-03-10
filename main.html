@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github Issue Tracker || Home</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/output.css" />
+    <script src="js/app.js"></script>
+
+  </head>
+  <body class="bg-gray-100 py-15 pt-0">
+    <div class="navbar bg-base-100 shadow-sm px-15">
+      <div class="flex-1">
+        <a class="btn btn-ghost text-xl"><img class="max-w-10" src="./assets/github-logo.png"/> <h1 class="ml-1 text-2xl text-black">GitHub Issues Tracker</h1></a>
+      </div>
+      <div class="flex gap-2">
+        <input
+          type="text"
+          placeholder="Search"
+          class="input input-bordered w-24 md:w-auto"
+        />
+        <div class="dropdown dropdown-end">
+          <div
+            tabindex="0"
+            role="button"
+            class="btn btn-ghost btn-circle avatar"
+          >
+            <div class="w-10 rounded-full">
+              <img
+                alt="Tailwind CSS Navbar component"
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+              />
+            </div>
+          </div>
+          <ul
+            tabindex="-1"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <a class="justify-between">
+                Profile
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li><a>Settings</a></li>
+            <li><a>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <section class="max-w-10/12 mx-auto mt-15">
+        <div class="bg-white shadow-sm rounded-md flex gap-2 p-5">
+              <a id="all_btn" class="w-25 text-white btn btn-active btn-primary">
+                All
+              </a>
+               <a id="opn_btn" class="w-25  btn text-slate-500">
+                Open
+              </a>
+               <a id="cls_btn" class="w-25  btn  text-slate-500">
+                Closed
+              </a>
+        </div>
+
+        <div class="bg-white p-5 rounder-md flex items-center justify-between mt-4 shadow">
+              <div class="flex justify-start items-center-safe gap-2">
+                  <img class="p-2 bg-[#ECE4FF] rounded-full" height="45px" width="45px" src="./assets/Aperture.png" />
+                  <div>
+                      <h2 class="text-lg font-semibold"><span id="issue_ctm">50</span> Issues</h2>
+                      <p class="text-sm text-slate-500">Track and manage your project issues</p>
+                  </div>
+              </div>
+              <div class="flex gap-4 items-center">
+                    <p class="flex items-center gap-2"><span class="status status-success status-lg"></span> Open</p>
+                      <p class="flex items-center gap-2"><span class="status status-primary status-lg"></span> Close</p>
+              </div>
+        </div>
+
+        <div id= "item_holder" class="item_holder bg-gray-50 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center justify-center gap-3">
+<!--
+              <div class="bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 border-success">
+                    <div class="flex justify-between items-center   px-4">
+                          <img height="24px" width="24px" src="./assets/Open-Status.png" />
+                          <div class="badge badge-soft badge-error px-6 rounded-xl">High</div>
+                    </div>
+                    <h3 class="text-md text-black font-semibold mt-3   px-4">Fix navigation menu on mobile devices</h3>
+                    <p class="text-sm text-slate-500 mt-3  px-4">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    <div class="flex items-center mt-3 gap-2  px-4 flex-wrap"> 
+                           <div class="badge badge-soft badge-error rounded-xl badge-outline"><svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)" fill="currentColor" stroke-width="0"></rect><path d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z" stroke-width="0" fill="currentColor"></path></g></svg>BUG</div>
+
+
+                                <div class="badge badge-soft badge-warning rounded-xl  badge-outline"><svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)" fill="currentColor" stroke-width="0"></rect><path d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z" stroke-width="0" fill="currentColor"></path></g></svg><span>HELP WANTED</span></div>
+                    </div>
+                    <div class="divider mt-3 mb-3"></div>
+                        <p class="text-sm text-slate-500 mt-3  px-4">#1 by john doe</p>
+                            <p class="text-sm text-slate-500 mt-3  px-4">1/15/2024</p>
+              </div>
+
+              <div class="bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 border-success">
+                    <div class="flex justify-between items-center   px-4">
+                          <img height="24px" width="24px" src="./assets/Open-Status.png" />
+                          <div class="badge badge-soft badge-warning px-6 rounded-xl">Medium</div>
+                    </div>
+                    <h3 class="text-md text-black font-semibold mt-3   px-4">Fix navigation menu on mobile devices</h3>
+                    <p class="text-sm text-slate-500 mt-3  px-4">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    <div class="flex items-center mt-3 gap-2  px-4 flex-wrap"> 
+                           <div class="badge badge-soft badge-error rounded-xl badge-outline"><svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)" fill="currentColor" stroke-width="0"></rect><path d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z" stroke-width="0" fill="currentColor"></path></g></svg>BUG</div>
+
+
+                                <div class="badge badge-soft badge-warning rounded-xl  badge-outline"><svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)" fill="currentColor" stroke-width="0"></rect><path d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z" stroke-width="0" fill="currentColor"></path></g></svg><span>HELP WANTED</span></div>
+                    </div>
+                    <div class="divider mt-3 mb-3"></div>
+                        <p class="text-sm text-slate-500 mt-3  px-4">#1 by john doe</p>
+                            <p class="text-sm text-slate-500 mt-3  px-4">1/15/2024</p>
+              </div>
+
+              <div class="bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 border-purple-500">
+                    <div class="flex justify-between items-center   px-4">
+                          <img height="24px" width="24px" src="./assets/Closed- Status .png" />
+                          <div class="badge badge-soft badge-neutral px-6 rounded-xl">LOW</div>
+                    </div>
+                    <h3 class="text-md text-black font-semibold mt-3   px-4">Fix navigation menu on mobile devices</h3>
+                    <p class="text-sm text-slate-500 mt-3  px-4">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    <div class="flex items-center mt-3 gap-2  px-4 flex-wrap"> 
+                           <div class="badge badge-soft badge-error rounded-xl badge-outline"><svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)" fill="currentColor" stroke-width="0"></rect><path d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z" stroke-width="0" fill="currentColor"></path></g></svg>BUG</div>
+
+
+                                <div class="badge badge-soft badge-warning rounded-xl  badge-outline"><svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)" fill="currentColor" stroke-width="0"></rect><path d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z" stroke-width="0" fill="currentColor"></path></g></svg><span>HELP WANTED</span></div>
+                    </div>
+                    <div class="divider mt-3 mb-3"></div>
+                        <p class="text-sm text-slate-500 mt-3  px-4">#1 by john doe</p>
+                            <p class="text-sm text-slate-500 mt-3  px-4">1/15/2024</p>
+              </div>
+
+              <div class="bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 border-success">
+                    <div class="flex justify-between items-center   px-4">
+                          <img height="24px" width="24px" src="./assets/Open-Status.png" />
+                          <div class="badge badge-soft badge-error px-6 rounded-xl">High</div>
+                    </div>
+                    <h3 class="text-md text-black font-semibold mt-3   px-4">Fix navigation menu on mobile devices</h3>
+                    <p class="text-sm text-slate-500 mt-3  px-4">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    <div class="flex items-center mt-3 gap-2  px-4 flex-wrap"> 
+                           <div class="badge badge-soft badge-error rounded-xl badge-outline"><svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)" fill="currentColor" stroke-width="0"></rect><path d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z" stroke-width="0" fill="currentColor"></path></g></svg>BUG</div>
+
+
+                                <div class="badge badge-soft badge-warning rounded-xl  badge-outline"><svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)" fill="currentColor" stroke-width="0"></rect><path d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z" stroke-width="0" fill="currentColor"></path></g></svg><span>HELP WANTED</span></div>
+                    </div>
+                    <div class="divider mt-3 mb-3"></div>
+                        <p class="text-sm text-slate-500 mt-3  px-4">#1 by john doe</p>
+                            <p class="text-sm text-slate-500 mt-3  px-4">1/15/2024</p>
+              </div>-->
+       
+        </div>
+    </section>
+  </body>
+</html>
