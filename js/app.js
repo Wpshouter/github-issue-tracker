@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alldata.forEach((issue) => {
         card = generate_item_bro(issue);
 
-        container.innerHTML += card;
+        container.appendChild(card);
       });
 
       //console.log(items);

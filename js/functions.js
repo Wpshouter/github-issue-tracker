@@ -27,10 +27,14 @@ function generate_item_bro(issue){
 
     // format date
     const createdDate = new Date(issue.createdAt).toLocaleDateString();
-
+      const card = document.createElement("div");
+         card.setAttribute('data-id', issue.id);
+    card.setAttribute('data-type', issue.status);
     // card HTML
-    const card = `
-      <div data-id="${issue.id}" data-type="${issue.status}" class="issue-item bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 ${borderClass} flex flex-col h-full">
+    card.className = `issue-item bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 ${borderClass} flex flex-col h-full`;
+ 
+    card.innerHTML = `
+    
         <div class="flex justify-between items-center px-4">
           <img height="24" width="24" src="${ img_url}" />
           <div class="badge badge-soft ${priorityClass} px-6 rounded-xl">${issue.priority}</div>
@@ -43,7 +47,61 @@ function generate_item_bro(issue){
         <div class="divider mt-3 mb-3"></div>
         <p class="text-sm text-slate-500 mt-3 px-4">#${issue.id} by ${issue.author}</p>
         <p class="text-sm text-slate-500 mt-3 px-4">${createdDate}</p>
-      </div>
+     
     `;
+
+    //console.log(card);
+    card.addEventListener('click', function(){
+        console.log(this);
+
+    })
     return card;
+}
+function modalContentGenerate(issue) {
+  // status badge
+  let statusBadgeClass = "badge-success";
+  if (issue.status === "closed") statusBadgeClass = "badge-error";
+
+  // priority badge
+  let priorityClass = "badge-error"; // high = red
+  if (issue.priority === "medium") priorityClass = "badge-warning";
+  if (issue.priority === "low") priorityClass = "badge-info";
+
+  // labels badges
+  const labelsHtml = issue.labels.map(label => {
+    let labelClass = "badge-soft badge-outline rounded-xl ";
+    if (label === "bug") labelClass += "badge-error";
+    else if (label === "help wanted") labelClass += "badge-warning";
+    else if (label === "enhancement") labelClass += "badge-success";
+    else if (label === "documentation") labelClass += "badge-info";
+    else if (label === "good first issue") labelClass += "badge-primary";
+
+    return `<div class="badge ${labelClass}">${label.toUpperCase()}</div>`;
+  }).join(" ");
+
+  // format date
+  const createdDate = new Date(issue.createdAt).toLocaleDateString();
+
+  // build modal content
+  return `
+    <h2 class="text-2xl font-bold">${issue.title}</h2>
+    <div class="flex items-center flex-wrap gap-2 mt-3 mb-3">
+      <div class="badge badge-md text-white px-4 ${statusBadgeClass}">${issue.status}</div>
+      <p class="text-slate-500">• Opened by ${issue.author}</p>
+      <p class="text-slate-500">• ${createdDate}</p>
+    </div>
+    ${labelsHtml}
+    <p class="text-md text-slate-500 my-5">${issue.description}</p>
+
+    <div class="foot bg-gray-100 flex flex-wrap p-4 gap-10 my-5 rounded shadow">
+      <div>
+        <p class="text-slate-500">Assignee:</p>
+        <h2 class="text-lg font-bold">${issue.assignee || "Unassigned"}</h2>
+      </div>
+      <div>
+        <p class="text-slate-500">Priority:</p>
+        <div class="badge badge-soft ${priorityClass} rounded-xl badge-outline"><span>${issue.priority}</span></div>
+      </div>
+    </div>
+  `;
 }
