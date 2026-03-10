@@ -53,43 +53,7 @@
         </div>
       </div>
     </div>
-    <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
-<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-  <div class="modal-box min-w-9/12">
-   
-      <h2 class="text-2xl font-bold">Fix Broken Image Uploads</h2>
-      <div class="flex items-center flex-wrap gap-2 mt-3 mb-3">
-          <div class="badge badge-md text-white px-4 badge-success">Success</div>
-          <p class="text-slate-500"">• Opened by Fahim Ahmed</p>
-          <p class="text-slate-500"">• 22/02/2026</p>
-      </div>
-     <div class="badge badge-soft badge-error rounded-xl badge-outline">BUG</div>
-     <div class="badge badge-soft badge-warning rounded-xl  badge-outline"><span>HELP WANTED</span></div>
-      <p class="text-md text-slate-500 my-5">The navigation menu doesn't collapse properly on mobile devices...</p>
 
-      <div class="foot bg-gray-100 flex flex-wrap p-4 gap-10 my-5 rounder shadow">
-          <div>
-              <p class="text-slate-500">Assignee:</p>
-              <h2 class="text-lg font-bold">Fahim Ahmed</h2>
-          </div>
-          <div>
-            <p class="text-slate-500">Priority:</p>
-             <div class="badge badge-soft badge-error rounded-xl  badge-outline"><span>High</span></div>
-          </div>
-      </div>
-      
-    <div class="modal-action">
-      <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn btn-primary">Close</button>
-      </form>
-    </div>
-
-
-  </div>
-
-
-</dialog>
 
     <section class="max-w-10/12 mx-auto mt-15">
         <div class="bg-white shadow-sm rounded-md flex gap-2 p-5">
@@ -194,5 +158,41 @@
        
         </div>
     </section>
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box min-w-9/12">
+   <div id="modal-content-cpr">
+      <h2 class="text-2xl font-bold">Fix Broken Image Uploads</h2>
+      <div class="flex items-center flex-wrap gap-2 mt-3 mb-3">
+          <div class="badge badge-md text-white px-4 badge-success">Success</div>
+          <p class="text-slate-500"">• Opened by Fahim Ahmed</p>
+          <p class="text-slate-500"">• 22/02/2026</p>
+      </div>
+     <div class="badge badge-soft badge-error rounded-xl badge-outline">BUG</div>
+     <div class="badge badge-soft badge-warning rounded-xl  badge-outline"><span>HELP WANTED</span></div>
+      <p class="text-md text-slate-500 my-5">The navigation menu doesn't collapse properly on mobile devices...</p>
+
+      <div class="foot bg-gray-100 flex flex-wrap p-4 gap-10 my-5 rounder shadow">
+          <div>
+              <p class="text-slate-500">Assignee:</p>
+              <h2 class="text-lg font-bold">Fahim Ahmed</h2>
+          </div>
+          <div>
+            <p class="text-slate-500">Priority:</p>
+             <div class="badge badge-soft badge-error rounded-xl  badge-outline"><span>High</span></div>
+          </div>
+      </div>
+      </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn btn-primary">Close</button>
+      </form>
+    </div>
+
+
+  </div>
+
+
+</dialog>
   </body>
 </html>

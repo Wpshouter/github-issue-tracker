@@ -31,7 +31,7 @@ function generate_item_bro(issue){
          card.setAttribute('data-id', issue.id);
     card.setAttribute('data-type', issue.status);
     // card HTML
-    card.className = `issue-item bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 ${borderClass} flex flex-col h-full`;
+    card.className = `issue-item cursor-pointer bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 ${borderClass} flex flex-col h-full`;
  
     card.innerHTML = `
     
@@ -53,7 +53,17 @@ function generate_item_bro(issue){
     //console.log(card);
     card.addEventListener('click', function(){
         console.log(this);
-
+        let id = this.getAttribute('data-id');
+        console.log(id);
+        fetch("https://phi-lab-server.vercel.app/api/v1/lab/issue/"+id)
+        .then(res => res.json())
+        .then(json => {
+            const issue = json.data;
+            const modalBody = document.getElementById("modal-content-cpr");
+            modalBody.innerHTML = modalContentGenerate(issue);
+             my_modal_5.showModal();
+        });
+       
     })
     return card;
 }
@@ -85,7 +95,7 @@ function modalContentGenerate(issue) {
   // build modal content
   return `
     <h2 class="text-2xl font-bold">${issue.title}</h2>
-    <div class="flex items-center flex-wrap gap-2 mt-3 mb-3">
+    <div class="flex items-center flex-wrap gap-2 my-5">
       <div class="badge badge-md text-white px-4 ${statusBadgeClass}">${issue.status}</div>
       <p class="text-slate-500">• Opened by ${issue.author}</p>
       <p class="text-slate-500">• ${createdDate}</p>
@@ -100,7 +110,7 @@ function modalContentGenerate(issue) {
       </div>
       <div>
         <p class="text-slate-500">Priority:</p>
-        <div class="badge badge-soft ${priorityClass} rounded-xl badge-outline"><span>${issue.priority}</span></div>
+        <div class="badge ${priorityClass} rounded-xl"><span class="text-white">${issue.priority}</span></div>
       </div>
     </div>
   `;
