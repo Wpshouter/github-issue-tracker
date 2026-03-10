@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById('item_holder');
+    //let items = null;
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then(response => {
       if (!response.ok) {
@@ -44,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // card HTML
     const card = `
-      <div data-id="${issue.id}" data-type="${issue.status}" class="bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 ${borderClass} flex flex-col h-full">
+      <div data-id="${issue.id}" data-type="${issue.status}" class="issue-item bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 ${borderClass} flex flex-col h-full">
         <div class="flex justify-between items-center px-4">
           <img height="24" width="24" src="${ img_url}" />
           <div class="badge badge-soft ${priorityClass} px-6 rounded-xl">${issue.priority}</div>
@@ -62,7 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     container.innerHTML += card;
     });
-      console.log(alldata);
+    
+      //console.log(items);
       if (data && data.length > 0) {
         document.body.innerHTML += `<p>First issue: ${data[0].title}</p>`;
       }
@@ -70,4 +72,57 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch(error => {
       console.error("Fetch error:", error);
     });
+
+
+      const allBtn = document.getElementById("all_btn");
+  const openBtn = document.getElementById("opn_btn");
+  const closedBtn = document.getElementById("cls_btn");
+  const issueCount = document.getElementById("issue_ctm");
+  //console.log('asdsad');
+    //console.log(items);
+  function setActive(btn) {
+    [allBtn, openBtn, closedBtn].forEach(b => {
+      b.classList.remove("btn-active", "btn-primary", "text-white");
+      b.classList.add("text-slate-500");
+    });
+    btn.classList.add("btn-active", "btn-primary", "text-white");
+    btn.classList.remove("text-slate-500");
+  }
+
+  function filterItems(type) {
+    items = document.querySelectorAll("div.issue-item");
+    let count = 0;
+    items.forEach(item => {
+      if (type === "all" || item.dataset.type === type) {
+        item.style.display = "block";
+        if (item.dataset.type === "open") count++;
+      } else {
+        item.style.display = "none";
+      }
+    });
+    console.log(count);
+    issueCount.textContent = count; // update open issue count
+  }
+
+  // Default: show all
+  filterItems("all");
+
+  allBtn.addEventListener("click", () => {
+
+    setActive(allBtn);
+    filterItems("all");
+  });
+
+  openBtn.addEventListener("click", () => {
+    console.log('clicked');
+    setActive(openBtn);
+    filterItems("open");
+  });
+
+  closedBtn.addEventListener("click", () => {
+    setActive(closedBtn);
+    filterItems("closed");
+  });
+
+  
 });
