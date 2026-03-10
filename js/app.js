@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setActive(allBtn);
     filterItems("all");
     hide_loader();
+    window.location.reload();
   });
 
   openBtn.addEventListener("click", () => {

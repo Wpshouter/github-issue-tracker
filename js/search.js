@@ -5,7 +5,9 @@
 
   // attach click event
   searchBtn.addEventListener("click", function(){
+       container.innerHTML = '';
       show_loader();
+      //return;
          const query = searchInput.value.trim();
     if (!query) return;
 
@@ -38,7 +40,7 @@
       let alldata = data.data;
       let count = alldata.length;
       console.log(count);
-      container.innerHTML = '';
+   
       document.getElementById("issue_ctm").innerHTML = count;
       alldata.forEach((issue) => {
         card = generate_item_bro(issue);
