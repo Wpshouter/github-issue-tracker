@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/output.css" />
     <script src="./js/app.js"></script>
     <script src="./js/functions.js"></script>
-
+    <script src="./js/search.js"></script>
   </head>
   <body class="bg-gray-100 py-15 pt-0">
     <div class="navbar bg-base-100 shadow-sm px-15">
@@ -19,38 +19,12 @@
         <a class="btn btn-ghost text-xl"><img class="max-w-10" src="./assets/github-logo.png"/> <h1 class="ml-1 text-2xl text-black">GitHub Issues Tracker</h1></a>
       </div>
       <div class="flex gap-2">
-        <input
+        <input id="searchinput"
           type="text"
           placeholder="Search"
           class="input input-bordered w-24 md:w-auto"
         />
-        <div class="dropdown dropdown-end">
-          <div
-            tabindex="0"
-            role="button"
-            class="btn btn-ghost btn-circle avatar"
-          >
-            <div class="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
-            </div>
-          </div>
-          <ul
-            tabindex="-1"
-            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <a class="justify-between">
-                Profile
-                <span class="badge">New</span>
-              </a>
-            </li>
-            <li><a>Settings</a></li>
-            <li><a>Logout</a></li>
-          </ul>
-        </div>
+       <button class="btn btn-md btn-primary" id="searchbro">Search</button>
       </div>
     </div>
 
