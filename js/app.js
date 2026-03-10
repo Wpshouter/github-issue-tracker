@@ -1,87 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById('item_holder');
-    //let items = null;
+  const container = document.getElementById("item_holder");
+  //let items = null;
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok " + response.statusText);
       }
       return response.json();
     })
-    .then(data => {
+    .then((data) => {
       console.log("Issues data:", data);
       // You can now work with the JSON object
       // For example, display the first issue title:
       let alldata = data.data;
-      alldata.forEach(issue => {
-    // border color: success if open, purple-500 if closed
-    const borderClass = issue.status === "closed" ? "border-purple-500" : "border-success";
-    let img_url = '';
-    if( issue.status === "closed" ){
-        img_url = './assets/Closed-Status.png'
-    }
-    else{
-        img_url = './assets/Open-Status.png';
-    }
-    // priority badge color
-    let priorityClass = "badge-error"; // default high
-    if (issue.priority === "medium") priorityClass = "badge-warning";
-    if (issue.priority === "low") priorityClass = "badge-neutral";
+      let count = alldata.length;
+      console.log(count);
+      document.getElementById("issue_ctm").innerHTML = count;
+      alldata.forEach((issue) => {
+        card = generate_item_bro(issue);
 
-    // build labels
-    const labelsHtml = issue.labels.map(label => {
-      let labelClass = "badge-outline badge-soft ";
-      if (label === "bug") labelClass += "badge-error";
-      else if (label === "help wanted") labelClass += "badge-warning";
-      else if (label === "enhancement") labelClass += "badge-success";
-      else if (label === "documentation") labelClass += "badge-info";
-      else if (label === "good first issue") labelClass += "badge-primary";
+        container.innerHTML += card;
+      });
 
-      return `<div class="badge ${labelClass} rounded-xl">${label.toUpperCase()}</div>`;
-    }).join("");
-
-    // format date
-    const createdDate = new Date(issue.createdAt).toLocaleDateString();
-
-    // card HTML
-    const card = `
-      <div data-id="${issue.id}" data-type="${issue.status}" class="issue-item bg-white rounded-md shadow-xl pt-5 pb-5 border-t-4 ${borderClass} flex flex-col h-full">
-        <div class="flex justify-between items-center px-4">
-          <img height="24" width="24" src="${ img_url}" />
-          <div class="badge badge-soft ${priorityClass} px-6 rounded-xl">${issue.priority}</div>
-        </div>
-        <h3 class="text-md text-black font-semibold mt-3 px-4">${issue.title}</h3>
-        <p class="text-sm text-slate-500 mt-3 px-4 flex-grow">${issue.description}</p>
-        <div class="flex items-center mt-3 gap-2 px-4 flex-wrap">
-          ${labelsHtml}
-        </div>
-        <div class="divider mt-3 mb-3"></div>
-        <p class="text-sm text-slate-500 mt-3 px-4">#${issue.id} by ${issue.author}</p>
-        <p class="text-sm text-slate-500 mt-3 px-4">${createdDate}</p>
-      </div>
-    `;
-
-    container.innerHTML += card;
-    });
-    
       //console.log(items);
       if (data && data.length > 0) {
         document.body.innerHTML += `<p>First issue: ${data[0].title}</p>`;
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Fetch error:", error);
     });
 
-
-      const allBtn = document.getElementById("all_btn");
+  const allBtn = document.getElementById("all_btn");
   const openBtn = document.getElementById("opn_btn");
   const closedBtn = document.getElementById("cls_btn");
   const issueCount = document.getElementById("issue_ctm");
   //console.log('asdsad');
-    //console.log(items);
+  //console.log(items);
   function setActive(btn) {
-    [allBtn, openBtn, closedBtn].forEach(b => {
+    [allBtn, openBtn, closedBtn].forEach((b) => {
       b.classList.remove("btn-active", "btn-primary", "text-white");
       b.classList.add("text-slate-500");
     });
@@ -92,10 +49,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function filterItems(type) {
     items = document.querySelectorAll("div.issue-item");
     let count = 0;
-    items.forEach(item => {
-      if (type === "all" || item.dataset.type === type) {
+    items.forEach((item) => {
+      if (type === "all") {
         item.style.display = "block";
-        if (item.dataset.type === "open") count++;
+        count++;
+      } else if (item.dataset.type === type) {
+        item.style.display = "block";
+        count++;
       } else {
         item.style.display = "none";
       }
@@ -108,13 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
   filterItems("all");
 
   allBtn.addEventListener("click", () => {
-
     setActive(allBtn);
     filterItems("all");
   });
 
   openBtn.addEventListener("click", () => {
-    console.log('clicked');
+    console.log("clicked");
     setActive(openBtn);
     filterItems("open");
   });
@@ -123,6 +82,4 @@ document.addEventListener("DOMContentLoaded", function () {
     setActive(closedBtn);
     filterItems("closed");
   });
-
-  
 });
