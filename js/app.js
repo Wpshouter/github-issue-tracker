@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("item_holder");
   //let items = null;
+  show_loader();
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((response) => {
       if (!response.ok) {
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("Fetch error:", error);
     });
-
+    hide_loader();
   const allBtn = document.getElementById("all_btn");
   const openBtn = document.getElementById("opn_btn");
   const closedBtn = document.getElementById("cls_btn");
@@ -68,18 +69,23 @@ document.addEventListener("DOMContentLoaded", function () {
   filterItems("all");
 
   allBtn.addEventListener("click", () => {
+      show_loader();
     setActive(allBtn);
     filterItems("all");
+    hide_loader();
   });
 
   openBtn.addEventListener("click", () => {
-    console.log("clicked");
+     show_loader();
     setActive(openBtn);
     filterItems("open");
+    hide_loader();
   });
 
   closedBtn.addEventListener("click", () => {
+    show_loader();
     setActive(closedBtn);
     filterItems("closed");
+    hide_loader();
   });
 });

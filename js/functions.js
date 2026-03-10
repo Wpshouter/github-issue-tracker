@@ -1,5 +1,6 @@
 function generate_item_bro(issue){
       // border color: success if open, purple-500 if closed
+     
     const borderClass = issue.status === "closed" ? "border-purple-500" : "border-success";
     let img_url = '';
     if( issue.status === "closed" ){
@@ -114,4 +115,12 @@ function modalContentGenerate(issue) {
       </div>
     </div>
   `;
+}
+function show_loader(){
+    const loader = document.getElementById('loader_icon');
+    loader.classList.remove('hidden');
+}
+function hide_loader(){
+    const loader = document.getElementById('loader_icon');
+    loader.classList.add('hidden');
 }

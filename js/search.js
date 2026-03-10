@@ -5,6 +5,7 @@
 
   // attach click event
   searchBtn.addEventListener("click", function(){
+      show_loader();
          const query = searchInput.value.trim();
     if (!query) return;
 
@@ -53,7 +54,7 @@
     .catch((error) => {
       console.error("Fetch error:", error);
     });
-
+    hide_loader();
 
   });
    });
